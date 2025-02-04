@@ -69,7 +69,7 @@ app.post('/api/songs', upload.single('file'), async (req, res) => {
 
   try {
     // Request genre from ML service
-    const mlResponse = await axios.post('http://localhost:5005/predict', { 
+    const mlResponse = await axios.post('https://classification-1uuf.onrender.com/predict', { 
       filePath: "C:\\Users\\HP\\OneDrive\\Desktop\\Mini_Project\\MiniProject-main\\server\\" + filePath 
   });  
     const genre = mlResponse.data.predicted_genre; // Assuming the response contains the genre
