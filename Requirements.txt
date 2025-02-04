@@ -1,0 +1,7 @@
+# Flask web framework
+Flask>=2.3.0
+
+# For managing .pkl files and ML models
+scikit-learn>=1.2.0
+numpy>=1.21.0
+pandas>=1.3.0
