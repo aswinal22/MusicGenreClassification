@@ -10,14 +10,7 @@ import Popup from './components/Popup'; // Import Popup
 import axios from 'axios';
 
 // Sample song data
-const sampleSongs = [
-  { id: 1, title: 'Song A', artist: 'Artist 1', genre: 'Pop', albumArt: 'https://via.placeholder.com/150' },
-  { id: 2, title: 'Song B', artist: 'Artist 2', genre: 'Rock', albumArt: 'https://via.placeholder.com/150' },
-  { id: 3, title: 'Song C', artist: 'Artist 3', genre: 'Jazz', albumArt: 'https://via.placeholder.com/150' },
-  { id: 4, title: 'Song D', artist: 'Artist 4', genre: 'Hip Hop', albumArt: 'https://via.placeholder.com/150' },
-  { id: 5, title: 'Song E', artist: 'Artist 5', genre: 'Classical', albumArt: 'https://via.placeholder.com/150' },
-  { id: 6, title: 'Song F', artist: 'Artist 6', genre: 'Electronic', albumArt: 'https://via.placeholder.com/150' },
-];
+const sampleSongs = [];
 
 // Predefined genres
 // const predefinedGenres = ['Pop', 'Rock', 'Jazz', 'Hip Hop', 'Classical', 'Electronic'];
