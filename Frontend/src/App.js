@@ -46,12 +46,14 @@ function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [recycleBinSongs, setRecycleBinSongs] = useState([]);
   const [popupMessage, setPopupMessage] = useState(''); // State for popup message
-
+  const api = "https://musicgenreclassification.onrender.com"
   useEffect(() => {
     const fetchSongs = async () => {
       try {
-        const response = await axios.get(`${process.env.REACT_APP_api}/api/songs`);
+        const response = await axios.get(`${apii}/api/songs`);
         console.log('Fetched songs:', response.data); // Add this line to debug
+        console.log(api);
+        
         setSongs(response.data);
       } catch (error) {
         console.error('Error fetching songs:', error);
@@ -64,7 +66,7 @@ function App() {
 
   const fetchRecycleBinSongs = async () => {
     try {
-      const response = await axios.get(`${process.env.REACT_APP_api}/api/recycle-bin`);
+      const response = await axios.get(`${api}/api/recycle-bin`);
       setRecycleBinSongs(response.data);
     } catch (error) {
       console.error('Error fetching recycle bin songs:', error);
@@ -73,9 +75,9 @@ function App() {
 
   const handleRestoreSong = async (id) => {
     try {
-      await axios.post(`${process.env.REACT_APP_api}/api/recycle-bin/${id}/restore`);
+      await axios.post(`${api}/api/recycle-bin/${id}/restore`);
       fetchRecycleBinSongs();
-      const response = await axios.get(`${process.env.REACT_APP_api}/api/songs`);
+      const response = await axios.get(`${api}/api/songs`);
       setSongs(response.data);
     } catch (error) {
       console.error('Error restoring song:', error);
@@ -85,7 +87,7 @@ function App() {
   const handleDeletePermanently = async (id) => {
     console.log(`Attempting to permanently delete song with id: ${id}`); // Add this line to debug
     try {
-      await axios.delete(`${process.env.REACT_APP_api}/api/recycle-bin/${id}`);
+      await axios.delete(`${api}/api/recycle-bin/${id}`);
       fetchRecycleBinSongs(); // Fetch recycle bin songs after deleting a song permanently
       setPopupMessage('Song permanently deleted'); // Set popup message
     } catch (error) {
@@ -114,7 +116,7 @@ function App() {
 
   const handleDeleteSong = async (id) => {
     try {
-      await axios.delete(`${process.env.REACT_APP_api}/api/songs/${id}`);
+      await axios.delete(`${api}/api/songs/${id}`);
       setSongs(prevSongs => prevSongs.filter(song => song._id !== id));
       fetchRecycleBinSongs(); // Fetch recycle bin songs after deleting a song
       setPopupMessage('Song moved to recycle bin'); // Set popup message
@@ -130,7 +132,7 @@ function App() {
     formData.append('file', songData.file);
 
     try {
-      const response = await axios.post(`${process.env.REACT_APP_api}/api/songs`, formData, {
+      const response = await axios.post(`${api}/api/songs`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
