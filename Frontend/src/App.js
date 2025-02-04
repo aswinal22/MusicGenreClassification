@@ -50,7 +50,7 @@ function App() {
   useEffect(() => {
     const fetchSongs = async () => {
       try {
-        const response = await axios.get(`${apii}/api/songs`);
+        const response = await axios.get(`${api}/api/songs`);
         console.log('Fetched songs:', response.data); // Add this line to debug
         console.log(api);
         
